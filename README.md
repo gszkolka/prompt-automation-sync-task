@@ -7,28 +7,28 @@ Welcome. This repository contains enterprise-grade prompt engineering frameworks
 ## Case Study 1: Production-Ready Customer Support Triage & Automation (B2B SaaS)
 
 ### 1. Business Problem & Context
-"SyncTask" is a B2B project management SaaS platform ($49/month per user). The customer support department faced critical bottlenecks during service outages. Critical emails from high-value users requesting immediate cancellation (churn risk) were mixed into a generic support queue, causing significant response delays, violation of SLAs, and financial loss.
+SyncTask is a B2B project management SaaS platform ($49/month per user). The customer support department faced critical bottlenecks during service outages. Critical emails from high-value users requesting immediate cancellation (churn risk) were mixed into a generic support queue, causing significant response delays, violation of SLAs, and financial loss.
 
 ### 2. Solution Architecture
-I designed an advanced, structured "Megaprompt" leveraging Markdown delimiters ([ROL], [CONTEXT], [TASK]) to enforce deterministic outputs. The objective is to parse unstructured raw customer emails and force the LLM to output a clean, validated JSON object to be consumed directly by a production backend API or CRM system (e.g., HubSpot, SendGrid) without parsing errors.
+I designed an advanced, structured Megaprompt leveraging Markdown delimiters ([ROLE], [CONTEXT], [TASK]) to enforce deterministic outputs. The objective is to parse unstructured raw customer emails and force the LLM to output a clean, validated JSON object to be consumed directly by a production backend API or CRM system (e.g., HubSpot, SendGrid) without parsing errors.
 
 #### The Prompt Framework:
-[ROL]
-Actúa como un Ingeniero de Soporte Técnico Senior y Especialista en Retención de Clientes para la empresa de software "SyncTask" (SaaS de gestión de proyectos). Tu tono debe ser altamente profesional, empático, resolutivo y directo.
+[ROLE]
+Act as a Senior Technical Support Engineer and Customer Retention Specialist for the software company "SyncTask" (project management SaaS). Your tone must be highly professional, empathetic, solution-oriented, and direct.
 
-[CONTEXTO DE LA EMPRESA]
-- SyncTask cuesta $49/mes por usuario.
-- Política de Cancelación: Si un cliente quiere cancelar, se le debe ofrecer un mes gratis o una sesión de consultoría 1-on-1 antes de proceder.
-- Política de Facturación: Si hay un cobro duplicado, se escala a finanzas y se promete una resolución en 24 horas.
+[COMPANY CONTEXT]
+- SyncTask costs $49/month per user.
+- Cancellation Policy: If a customer wants to cancel, offer one month free or a 1-on-1 consultation session before proceeding.
+- Billing Policy: If there is a duplicate charge, escalate to finance and promise a resolution within 24 hours.
 
-[TAREA]
-Analiza el correo electrónico del cliente adjunto abajo y genera un output estructurado en formato JSON con las siguientes claves:
-1. "category": Clasifica el correo estrictamente en una de estas opciones: [Soporte Técnico, Facturación, Cancelación, Feedback].
-2. "urgency_level": Asigna un nivel del 1 al 5 (donde 5 es crítico/pérdida de cliente).
-3. "customer_sentiment": Describe brevemente el estado emocional del cliente (ej. Frustrado, Enojado, Confundido, Neutral).
-4. "draft_response": Redacta una respuesta por correo electrónico en inglés que aplique técnicas de desescalada de conflictos. Si es facturación o cancelación, aplica las políticas de la empresa mencionadas en el contexto.
+[TASK]
+Analyze the attached customer email below and generate a structured output in JSON format with the following keys:
+1. "category": Classify the email strictly into one of these options: [Technical Support, Billing, Cancellation, Feedback].
+2. "urgency_level": Assign a level from 1 to 5 (where 5 is critical/imminent customer churn).
+3. "customer_sentiment": Briefly describe the emotional state of the customer (e.g., Frustrated, Angry, Confused, Neutral).
+4. "draft_response": Draft a response email in English applying de-escalation techniques. For billing or cancellation, apply company policies mentioned in the context.
 
-[CORREO DEL CLIENTE]
+[CUSTOMER EMAIL]
 "Hi SyncTask team, I am extremely frustrated. Your platform has been down for the last two hours and my team couldn't access our project boards before a major client presentation. This is unacceptable for a service we pay $49/month for. I want a refund for this month, and honestly, if this happens again, I want to cancel my subscription immediately. Let me know how you will fix this."
 
 ---
