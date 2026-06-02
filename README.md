@@ -1,31 +1,42 @@
-# Portfolio de Ingeniería de Prompts: Automatización de Operaciones SaaS
 
-## Proyecto 1: Sistema Avanzado de Clasificación y Respuesta de Soporte B2B
-**Estado:** Producción / Prototipo Validado  
-**Modelos Evaluados:** Gemini 1.5 Pro vs. Claude 3.5 Sonnet
 
-### 1. El Problema de Negocio
-"SyncTask", una empresa ficticia de software SaaS B2B ($49/mes por usuario), presentaba cuellos de botella en su departamento de soporte técnico y retención. Los correos de clientes críticos entraban en una bandeja genérica, retrasando la detección de usuarios en riesgo de cancelación (*churn*) y mezclando problemas técnicos urgentes con dudas de facturación menores.
+# Mi Portafolio de Ingeniería de Prompts
 
-### 2. La Solución (Arquitectura del Prompt)
-Diseñé un "Megaprompt" estructurado por bloques lógicos ([ROL], [CONTEXTO], [TAREA]) para automatizar el triage de entrada. El objetivo es procesar el correo del cliente y obligar al modelo a devolver un objeto estructurado en formato **JSON** listo para ser consumido por un sistema automatizado de correos (CRM) o un equipo de desarrollo.
+Hola, soy especialista en IA orientado a optimizar operaciones y automatizar tareas para empresas en remoto. En este repositorio muestro mis proyectos reales y mi capacidad para trabajar con diferentes Modelos de Lenguaje (LLMs).
 
-#### El Prompt Desarrollado:
-```text
-[ROL]
-Actúa como un Ingeniero de Soporte Técnico Senior y Especialista en Retención de Clientes para la empresa de software "SyncTask" (SaaS de gestión de proyectos). Tu tono debe ser altamente profesional, empático, resolutivo y directo.
+---
 
-[CONTEXTO DE LA EMPRESA]
-- SyncTask cuesta $49/mes por usuario.
-- Política de Cancelación: Si un cliente quiere cancelar, se le debe ofrecer un mes gratis o una sesión de consultoría 1-on-1 antes de proceder.
-- Política de Facturación: Si hay un cobro duplicado, se escala a finanzas y se promete una resolución en 24 horas.
+## Proyecto 1: Automatización y Clasificación de Soporte Técnico para Empresas SaaS
 
-[TAREA]
-Analiza el correo electrónico del cliente adjunto abajo y genera un output estructurado en formato JSON con las siguientes claves:
-1. "category": Clasifica el correo estrictamente en una de estas opciones: [Soporte Técnico, Facturación, Cancelación, Feedback].
-2. "urgency_level": Asigna un nivel del 1 al 5 (donde 5 es crítico/pérdida de cliente).
-3. "customer_sentiment": Describe brevemente el estado emocional del cliente (ej. Frustrado, Enojado, Confundido, Neutral).
-4. "draft_response": Redacta una respuesta por correo electrónico en inglés que aplique técnicas de desescalada de conflictos. Si es facturación o cancelación, aplica las políticas de la empresa mencionadas en el contexto.
+### 1. El Problema que resolví
+Las empresas de software suelen perder mucho tiempo clasificando los correos de soporte que entran. Los problemas técnicos urgentes se mezclan con quejas menores o solicitudes de cancelación, lo que provoca que los clientes se enojen y dejen de pagar el servicio.
 
-[CORREO DEL CLIENTE]
-"Hi SyncTask team, I am extremely frustrated. Your platform has been down for the last two hours and my team couldn't access our project boards before a major client presentation. This is unacceptable for a service we pay $49/month for. I want a refund for this month, and honestly, if this happens again, I want to cancel my subscription immediately. Let me know how you will fix this."
+### 2. La Solución
+Diseñé un "Megaprompt" avanzado que analiza el correo de un cliente frustrado y obliga a la Inteligencia Artificial a devolver los datos perfectamente ordenados (en formato JSON) para que un sistema informático los lea sin errores.
+
+#### El Prompt que creé:
+- **Rol asignado a la IA:** Ingeniero de Soporte Técnico Senior.
+- **Instrucciones dadas:** Clasificar el correo en una categoría, medir el nivel de urgencia del 1 al 5, detectar el sentimiento del cliente y redactar un borrador de correo electrónico aplicando políticas específicas de la empresa.
+
+---
+
+### 3. Prueba Empírica: Gemini vs. Claude
+
+Para garantizar que el sistema funcione a la perfección, probé el mismo prompt exacto en los dos modelos de Inteligencia Artificial más potentes del mercado:
+
+#### Resultado en Gemini:
+- **Urgencia detectada:** 5 (Crítica).
+- **Sentimiento:** Enojado.
+- **Evaluación:** Gemini respondió de manera muy rápida y con un tono natural, pero falló un poco al aplicar las reglas del negocio, ya que le ofreció al cliente todas las compensaciones de golpe en lugar de ir paso a paso.
+
+#### Resultado en Claude:
+- **Urgencia detectada:** 4 (Alta).
+- **Sentimiento:** "Extremadamente frustrado y amenazando con cancelación".
+- **Evaluación:** Claude fue el ganador indiscutible. Estructuró los datos de forma mucho más limpia (separó el "Asunto" del "Cuerpo" del correo), lo cual es ideal para que los programadores lo conecten a una aplicación. Su redacción fue mucho más profesional y corporativa.
+
+---
+
+### 4. Conclusión Profesional (Veredicto para la empresa)
+Recomiendo utilizar **Claude** para este tipo de automatizaciones en empresas. Su capacidad para respetar los formatos de datos y entender las reglas complejas de un negocio reduce a cero los errores técnicos y protege la reputación de la marca ante clientes insatisfechos.
+
+
